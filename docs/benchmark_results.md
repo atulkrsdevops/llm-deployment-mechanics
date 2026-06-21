@@ -17,7 +17,7 @@ Same quantized model, same g5.xlarge instance, same load pattern.
 
 | Engine | Concurrency | Req/sec | Tokens/sec | p50 latency | p95 latency | p99 latency |
 |---|---|---|---|---|---|---|
-| vLLM | 10 | _ | _ | _ s | _ s | _ s |
+| vLLM | 10 | 1.39 | 139.43 | 6.99s | 7.15s | 7.19s |
 | TGI  | 10 | _ | _ | _ s | _ s | _ s |
 
 *Source: `benchmark/results_vllm.json`, `benchmark/results_tgi.json`*
