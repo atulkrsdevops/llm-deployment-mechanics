@@ -6,7 +6,7 @@ Fill this in after running the quantization scripts and load tests. This is the 
 
 | Method | FP16 VRAM | Quantized VRAM | Reduction | Quantization Time |
 |---|---|---|---|---|
-| AWQ 4-bit  | _ GB | _ GB | _ % | _ s |
+| AWQ 4-bit  | 14 GB | 3.9 GB | 72.1 % | _ s |
 | GPTQ 4-bit | _ GB | _ GB | _ % | _ s |
 
 *Source: `quantization/awq_results.json`, `quantization/gptq_results.json`*
