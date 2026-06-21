@@ -1,0 +1,7 @@
+torch>=2.1.0
+transformers>=4.38.0
+accelerate>=0.27.0
+autoawq>=0.2.0
+auto-gptq>=0.7.0
+optimum>=1.17.0
+datasets>=2.17.0

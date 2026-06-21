@@ -1,0 +1,3 @@
+key_pair_name = "your-ec2-key-pair-name"
+my_ip_cidr    = "YOUR_IP/32" # run: curl https://checkip.amazonaws.com
+aws_region    = "us-east-1"

@@ -1,0 +1,24 @@
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/.terraform.lock.hcl
+terraform/terraform.tfvars
+*.pem
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Model weights - too large for git, document download instructions instead
+quantization/models/
+*.safetensors
+*.bin
+
+# Logs and results (commit final results.json manually after curating)
+*.log
+
+# Env
+.env
