@@ -30,10 +30,21 @@ Most GenAI portfolios stop at "I built a RAG app." This one covers the layer und
 
 Default: `mistralai/Mistral-7B-Instruct-v0.2` (swap in `quantization/config.py`). FP16 needs ~14GB VRAM; AWQ 4-bit needs ~5GB — this is the gap we're measuring.
 
-## Results (fill in after running)
+## Results
 
-See `docs/benchmark_results.md` for throughput/latency tables and the cost-per-1k-tokens comparison.
+- Quantized Mistral-7B-Instruct-v0.2 with AWQ 4-bit: **14GB → 3.9GB (72% size reduction)**
+- Served via vLLM on a single A40 GPU, achieving **139 tokens/sec** at concurrency=10
+- p95 latency held at 7.15s even under concurrent load
 
+Quantized model published: https://huggingface.co/atulkrs/mistral-7b-awq
+
+## Lessons Learned
+
+Deploying vLLM hit a string of real-world infra issues worth documenting:
+- AWS spot quota defaults to 0 for GPU instances on new accounts — required a Service Quotas request
+- Driver/CUDA version mismatches between pip-installed PyTorch and the host GPU driver caused repeated import failures
+- Resolved by switching from a manual pip install to the official `vllm/vllm-openai` Docker image, which ships a pre-tested, matched dependency set
+- AWQ quantization requires `--dtype float16` explicitly; `--dtype auto` can resolve to an unsupported dtype
 ## Stack
 
 AWS EC2 (g5.xlarge, spot) · Terraform · vLLM · Hugging Face TGI · AutoAWQ · AutoGPTQ · FastAPI · CloudWatch
