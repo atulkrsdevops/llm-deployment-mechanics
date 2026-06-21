@@ -31,6 +31,7 @@ async def single_request(client: httpx.AsyncClient, backend: str, prompt: str, m
         resp = await client.post(
             "http://localhost:8000/v1/completions",
             json={"model": "mistral-7b-awq", "prompt": prompt, "max_tokens": max_tokens},
+            headers={"Authorization": "Bearer sk-zftplw70siifrn"},
             timeout=60,
         )
         data = resp.json()
